@@ -1,21 +1,18 @@
 import React from "react";
-import Image from "./Image";
 
-class ImageList extends React.Component {
-  renderImage(image) {
-    return <Image key={image.id} src={image.urls.small} />;
-  }
+const ImageList = (props) => {
+  const images = props.images.map(function ({ id, urls, description }) {
+    return <img key={id} src={urls.regular} alt={description} />;
+  });
 
-  render() {
-    return (
-      <div
-        className="ui medium images"
-        style={{ padding: "15px", textAlign: "center" }}
-      >
-        {this.props.images.map(this.renderImage)}
-      </div>
-    );
-  }
-}
+  return (
+    <div
+      className="ui medium images"
+      style={{ padding: "15px", textAlign: "center" }}
+    >
+      {images};
+    </div>
+  );
+};
 
 export default ImageList;
